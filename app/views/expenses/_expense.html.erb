@@ -1,0 +1,29 @@
+<%= turbo_frame_tag expense do %>
+  <div class="expense">
+    <div class="element">
+      <%= link_to expense.expense_type,
+                expense_path(expense),
+                data: { turbo_frame: "_top" }%>
+    </div>
+    <div class="element">
+      <%= expense.value %>
+    </div>
+    <div class="element">
+      <%= expense.description if expense.description.present? %>
+    </div>
+    <div class="element">
+    <%= expense.created_at.strftime("(%H:%M) %d.%m.%Y") %>
+    </div>
+    <div class="element">
+      <div class="expense__actions">
+        <%= button_to "Delete",
+                      expense_path(expense),
+                      method: :delete,
+                      class: "btn btn--light" %>
+        <%= link_to "Edit",
+                    edit_expense_path(expense),
+                    class: "btn btn--light" %>
+      </div>
+    </div>
+  </div>
+<% end %>

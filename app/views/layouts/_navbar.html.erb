@@ -1,0 +1,12 @@
+<header class="navbar">
+  <% if user_signed_in? %>
+    <div class="navbar__name">
+      <%= current_user.email %>
+    </div>
+    <%= button_to "Sign out",
+                  destroy_user_session_path,
+                  method: :delete,
+                  class: "btn btn--dark",
+                  data: { turbo: false} %>
+  <% end %>
+</header>

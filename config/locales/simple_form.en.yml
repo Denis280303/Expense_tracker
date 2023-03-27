@@ -1,0 +1,18 @@
+en:
+  simple_form:
+    placeholders:
+      expense:
+        expense_type: Type of expense..
+        value: Value..
+        description: Short description..
+    labels:
+      expense:
+        expense_type: Expense type
+        value: Value
+        description: Description
+
+  helpers:
+    submit:
+      expense:
+        create: Create expense
+        update: Update expense

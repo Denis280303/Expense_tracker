@@ -1,0 +1,11 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to expenses"), expenses_path %>
+
+  <div class="header">
+    <h1>New expense</h1>
+  </div>
+
+  <%= turbo_frame_tag @expense do %>
+    <%= render "form", expense: @expense %>
+  <% end %>
+</main>
