@@ -5,7 +5,11 @@
   <%= f.error_notification %>
 
   <div class="form__inputs">
-    <%= f.input :login, autofocus: true, autocomplete: "off", placeholder: "Login.." %>
+    <%= f.input :login,
+                autofocus: true,
+                label: 'login',
+                autocomplete: "off",
+                placeholder: "Login.." %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,

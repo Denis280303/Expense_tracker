@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 class ExpensesController < ApplicationController
-  before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :set_expense, only: %i[show edit update destroy]
   def index
-    @expenses = current_user.expenses.ordered.paginate(page: params[:page], per_page: 10)
+    @expenses = current_user.
+      expenses.ordered.
+      paginate(page: params[:page], per_page: 10)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @expense = Expense.new
@@ -16,22 +19,21 @@ class ExpensesController < ApplicationController
 
     if @expense.save
       respond_to do |format|
-        format.html { redirect_to expenses_path, notice: "Expense was successfully created." }
-        format.turbo_stream { flash.now[:notice] = "Expense was successfully created." }
+        format.html { redirect_to expenses_path, notice: 'Expense was successfully created.' }
+        format.turbo_stream { flash.now[:notice] = 'Expense was successfully created.' }
       end
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @expense.update(expense_params)
       respond_to do |format|
-        format.html { redirect_to expenses_path, notice: "Expense was successfully updated." }
-        format.turbo_stream { flash.now[:notice] = "Expense was successfully updated." }
+        format.html { redirect_to expenses_path, notice: 'Expense was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Expense was successfully updated.' }
       end
     else
       render :edit, status: :unprocessable_entity
@@ -41,15 +43,18 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_path, notice: "Expense was successfully destroyed." }
-      format.turbo_stream { flash.now[:notice] = "Expense was successfully destroyed." }
+      format.html { redirect_to expenses_path, notice: 'Expense was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Expense was successfully destroyed.' }
     end
   end
 
   def show_report
     @@scope_of_expenses = current_user.expenses
     @q = Expense.ransack(params[:q])
-    @expenses = @q.result(distinct: true).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @expenses = @q.
+      result(distinct: true).
+      order(created_at: :desc).
+      paginate(page: params[:page], per_page: 10)
     @@scope_of_expenses = @expenses
   end
 
@@ -59,7 +64,6 @@ class ExpensesController < ApplicationController
     flash[:notice] = 'Expenses sent successfully!'
     redirect_to show_report_path
   end
-
 
   private
 

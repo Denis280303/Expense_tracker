@@ -25,11 +25,9 @@
                       expense_path(expense),
                       method: :delete,
                       class: "btn btn--light" %>
-        <% if current_page?(controller: 'expenses', action: 'index') %>
-          <%= link_to "Edit",
-                      edit_expense_path(expense),
-                      class: "btn btn--light" %>
-          <% end %>
+        <%= link_to "Edit",
+                    edit_expense_path(expense),
+                    class: "btn btn--light" %>
       </div>
     </div>
   </div>

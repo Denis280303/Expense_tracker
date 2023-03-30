@@ -3,7 +3,11 @@
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {
   data: { turbo: false } }) do |f| %>
   <div class="form__inputs">
-    <%= f.input :login, autofocus: true, autocomplete: "off", placeholder: 'Login...' %>
+    <%= f.input :login,
+                autofocus: true,
+                label: 'login',
+                autocomplete: "off",
+                placeholder: 'Login...' %>
     <%= f.input :email,
                 required: false,
                 autofocus: true,
