@@ -6,12 +6,13 @@
 
   <div class="form__inputs">
     <%= f.input :login,
+                required: true,
                 autofocus: true,
                 label: 'login',
                 autocomplete: "off",
                 placeholder: "Login.." %>
     <%= f.input :email,
-                required: true,
+                required: false,
                 autofocus: true,
                 input_html: { autocomplete: "email" },
                 placeholder: "Or email.." %>
