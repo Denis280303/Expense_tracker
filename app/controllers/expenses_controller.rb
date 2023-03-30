@@ -50,7 +50,7 @@ class ExpensesController < ApplicationController
 
   def show_report
     @@scope_of_expenses = current_user.expenses
-    @q = Expense.ransack(params[:q])
+    @q = current_user.expenses.ransack(params[:q])
     @expenses = @q.
       result(distinct: true).
       order(created_at: :desc).
