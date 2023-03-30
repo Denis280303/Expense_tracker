@@ -1,28 +1,29 @@
-<%= search_form_for @q, url: generate_report_path, method: :post do |f| %>
-  <%= f.label :expense_type_eq, "Expense Type:" %>
-  <%= f.select :expense_type_eq, Expense.expense_types.map { |k, v| [k.titleize, v] }, { include_blank: 'All categories' }, { class: "form-control" } %>
+<h1>Report</h1>
+<div class="columns">
+  <div class="boxes">
+    <div class="form__block">
+      <%= render partial: 'search_form' %>
+      <%= render partial: 'form_for_share' %>
+    </div>
+  </div>
+  <main class="container">
+    <div>
+      <div class="expense__title">
+        <div style="width: 140px">
+          Expense Type
+        </div>
+        <div style="width: 100px">
+          Value
+        </div>
+        <div>
+          Description
+        </div>
+      </div>
+      <%= turbo_frame_tag 'expenses' do %>
+        <%= render @expenses %>
+      <% end %>
 
-  <%= f.label :created_at_gteq, "Less than:" %>
-  <%= f.text_field :value_lteq, placeholder: 'Enter a value' %>
-  <%= f.label :created_at_gteq, "More than:" %>
-  <%= f.text_field :value_gteq, placeholder: 'Enter a value' %>
-
-  <%= f.label :created_at_gteq, "From:" %>
-  <%= f.date_field :created_at_gteq, type: "date" %>
-
-  <%= f.label :created_at_lteq, "To:" %>
-  <%= f.date_field :created_at_lteq, type: "date" %>
-  <%= f.submit "Sort", class: 'btn btn--primary' %>
-<% end %>
-
-<%= form_with url: send_report_path, method: :post do |f| %>
-  <%= f.label :email, "Share with:" %>
-  <%= f.text_field :email %>
-  <%= f.submit 'Send Report', class: 'btn btn--primary' %>
-<% end %>
-
-<%= turbo_frame_tag 'expenses' do %>
-  <%= render @expenses %>
-<% end %>
-
-<%= will_paginate @expenses %>
+      <%= will_paginate @expenses %>
+    </div>
+  </main>
+</div>

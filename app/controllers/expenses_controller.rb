@@ -51,7 +51,6 @@ class ExpensesController < ApplicationController
     @q = Expense.ransack(params[:q])
     @expenses = @q.result(distinct: true).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
     @@scope_of_expenses = @expenses
-    @expenses
   end
 
   def send_report
@@ -71,5 +70,4 @@ class ExpensesController < ApplicationController
   def expense_params
     params.require(:expense).permit(:expense_type, :value, :description)
   end
-
 end

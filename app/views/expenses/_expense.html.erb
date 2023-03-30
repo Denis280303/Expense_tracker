@@ -1,22 +1,22 @@
 <%= turbo_frame_tag expense do %>
   <div class="expense">
-    <div class="element">
+    <div class="element__fixed">
       <%= link_to expense.expense_type,
                 expense_path(expense),
                 data: { turbo_frame: "_top" }%>
     </div>
-    <div class="element">
+    <div class="element__fixed">
       <%= expense.value %>
       <i class="fas fa-arrow-right"></i>
     </div>
-    <div class="element">
+    <div class="element__fixed">
       <% if expense.description.present? %>
         <div class="element__fixed"><%= expense.description %></div>
       <% else %>
         <h4>-</h4>
       <% end %>
     </div>
-    <div class="element">
+    <div class="element__fixed">
     <%= expense.created_at.strftime("(%H:%M) %d.%m.%Y") %>
     </div>
     <div class="element">
@@ -25,9 +25,11 @@
                       expense_path(expense),
                       method: :delete,
                       class: "btn btn--light" %>
-        <%= link_to "Edit",
-                    edit_expense_path(expense),
-                    class: "btn btn--light" %>
+        <% if current_page?(controller: 'expenses', action: 'index') %>
+          <%= link_to "Edit",
+                      edit_expense_path(expense),
+                      class: "btn btn--light" %>
+          <% end %>
       </div>
     </div>
   </div>

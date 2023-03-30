@@ -1,0 +1,5 @@
+<%= form_with url: send_report_path, method: :post do |f| %>
+  <%= f.label :email, "Share with:" %>
+  <%= f.text_field :email, placeholder: 'Email of user..' %>
+  <%= f.submit 'Send Report', class: 'btn btn--primary' %>
+<% end %>
