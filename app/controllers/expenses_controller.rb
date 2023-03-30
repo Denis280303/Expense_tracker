@@ -59,7 +59,7 @@ class ExpensesController < ApplicationController
   end
 
   def send_report
-    @expenses = @@scope_of_expenses
+    @expenses = @@scope_of_expenses.present? ? @@scope_of_expenses : current_user.expenses
     UserMailer.report_email(params[:email], @expenses).deliver_now
     flash[:notice] = 'Expenses sent successfully!'
     redirect_to show_report_path
