@@ -7,9 +7,14 @@
     </div>
     <div class="element">
       <%= expense.value %>
+      <i class="fas fa-arrow-right"></i>
     </div>
     <div class="element">
-      <%= expense.description if expense.description.present? %>
+      <% if expense.description.present? %>
+        <div class="element__fixed"><%= expense.description %></div>
+      <% else %>
+        <h4>-</h4>
+      <% end %>
     </div>
     <div class="element">
     <%= expense.created_at.strftime("(%H:%M) %d.%m.%Y") %>

@@ -28,4 +28,6 @@
   <%= turbo_frame_tag 'expenses' do %>
     <%= render @expenses %>
   <% end %>
+
+  <h4><%= will_paginate @expenses %></h4>
 </main>

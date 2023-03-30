@@ -52,6 +52,10 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 gem "simple_form", "~> 5.1.0"
 gem "devise", "~> 4.8.1"
+gem 'bootstrap', '~> 4.6', '>= 4.6.0'
+gem "font-awesome-sass", "~> 6.3.0"
+gem 'ransack'
+gem 'will_paginate'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -25,4 +25,21 @@
       border-color: var(--color-primary);
     }
   }
+
+  &__inputs {
+    display: block;
+    width: 15%;
+    padding: var(--space-xxs) var(--space-xs);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    outline: none;
+    transition: box-shadow 250ms;
+  }
+}
+
+.inline{
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }

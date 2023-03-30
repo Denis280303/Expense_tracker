@@ -31,6 +31,23 @@
     }
   }
 
+  &--primary-fixed {
+    width: 5%;
+    border-radius: 5px;
+    margin-left: 5%;
+    margin-top: 1%;
+    color: var(--color-white);
+    background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-rotate));
+
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      color: var(--color-white);
+      filter: saturate(1.4) brightness(115%);
+    }
+  }
+
   &--secondary {
     color: var(--color-white);
     background-image: linear-gradient(to right, var(--color-secondary), var(--color-secondary-rotate));

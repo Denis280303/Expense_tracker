@@ -22,12 +22,20 @@
   }
 }
 
+.element{
+  &__fixed{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+  }
+}
+
 .expense__title {
   display: flex;
   justify-content: unset;
   align-items: center;
   gap: var(--space-xxxxl);
-
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-small);
   margin-bottom: var(--space-m);

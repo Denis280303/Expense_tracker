@@ -1,5 +1,14 @@
 <header class="navbar">
   <% if user_signed_in? %>
+    <%= button_to "Report",
+                  show_report_path,
+                  class: "btn btn--dark",
+                  data: { turbo: false} %>
+    <%= button_to "All expenses",
+                  expenses_path,
+                  method: :get,
+                  class: "btn btn--dark navbar__btn",
+                  data: { turbo: false} %>
     <div class="navbar__name">
       <%= current_user.email %>
     </div>

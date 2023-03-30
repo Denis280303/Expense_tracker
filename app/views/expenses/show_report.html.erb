@@ -1,0 +1,22 @@
+<%= search_form_for @q, url: generate_report_path, method: :post do |f| %>
+  <%= f.label :expense_type_eq, "Expense Type" %>
+  <%= f.select :expense_type_eq, Expense.expense_types.keys.map{ |type| [type.titleize, type] }, { include_blank: 'All categories' }, { class: "form-control" } %>
+
+  <%= f.label :created_at_gteq, "Less than:" %>
+  <%= f.text_field :value_lteq, placeholder: 'Enter a value' %>
+  <%= f.label :created_at_gteq, "More than:" %>
+  <%= f.text_field :value_gteq, placeholder: 'Enter a value' %>
+
+  <%= f.label :created_at_gteq, "From:" %>
+  <%= f.date_field :created_at_gteq, type: "date" %>
+
+  <%= f.label :created_at_lteq, "To:" %>
+  <%= f.date_field :created_at_lteq, type: "date" %>
+  <%= f.submit "Sort" %>
+<% end %>
+
+<%= turbo_frame_tag 'expenses' do %>
+  <%= render @expenses %>
+<% end %>
+
+<%= will_paginate @expenses %>

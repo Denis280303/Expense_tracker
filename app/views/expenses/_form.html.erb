@@ -5,8 +5,8 @@
     </div>
   <% end %>
 
+  <%= f.select :expense_type, Expense.expense_types.keys.map{ |type| [type.titleize, type] }, { include_blank: 'All categories' }, { class: "form-control" } %>
   <%= f.input :value, input_html: { autofocus: true }, label: 'Value' %>
-  <%= f.input :expense_type, label: 'Expense type' %>
   <%= f.input :description, label: 'Description' %>
   <%= link_to "Cancel", expenses_path, class: "btn btn--light" %>
   <%= f.submit class: "btn btn--secondary" %>

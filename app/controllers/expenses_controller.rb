@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
   def index
-    @expenses = current_user.expenses.ordered
+    @expenses = current_user.expenses.ordered.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -44,6 +44,11 @@ class ExpensesController < ApplicationController
       format.html { redirect_to expenses_path, notice: "Expense was successfully destroyed." }
       format.turbo_stream { flash.now[:notice] = "Expense was successfully destroyed." }
     end
+  end
+
+  def show_report
+    @q = Expense.ransack(params[:q])
+    @expenses = @q.result(distinct: true).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
   end
 
   private
