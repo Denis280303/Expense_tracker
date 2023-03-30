@@ -13,7 +13,8 @@ RSpec.describe Expense do
 
     context 'when expense_type' do
       it do
-        expect(record).to allow_values(1, 24, 333333).for(:expense_type)
+        expect(Expense::CATEGORIES).to eq ['Traveling', 'Clothing', 'Taxi', 'Cafes', 'Shops', 'Other']
+        expect(record).to allow_values(0, 1, 2, 3, 4, 5).for(:expense_type)
       end
     end
 

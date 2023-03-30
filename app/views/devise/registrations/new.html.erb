@@ -5,20 +5,21 @@
   <%= f.error_notification %>
 
   <div class="form__inputs">
+    <%= f.input :login, autofocus: true, autocomplete: "off", placeholder: "Login.." %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" },
-                placeholder: "Email.."%>
+                placeholder: "Or email.." %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" },
-                placeholder: "Password.."%>
+                placeholder: "Password.." %>
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" },
-                placeholder: "Password confirmation.."%>
+                placeholder: "Password confirmation.." %>
   </div>
 
   <div class="form-actions btn--primary-fixed">

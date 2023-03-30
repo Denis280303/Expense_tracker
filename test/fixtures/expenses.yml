@@ -16,8 +16,3 @@ second:
   description: "Some second description..."
   user: accountant
 
-third:
-  expense_type: 3
-  value: 10000
-  description: "Some third description..."
-  user: manager

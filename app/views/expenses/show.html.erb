@@ -1,8 +1,26 @@
 <main class="container">
   <%= link_to sanitize("&larr; Back to expenses"), expenses_path %>
   <div class="header">
-    <h1>
-      <%= @expense.description %>
-    </h1>
+    <h1>Details:</h1>
+  </div>
+  <div class="show">
+    <table>
+      <thead>
+      <tr>
+        <th>Expense Type</th>
+        <th>Value</th>
+        <th>Description</th>
+        <th>Created At</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @expense.expense_type %></td>
+          <td><%= @expense.value %></td>
+          <td><%= @expense.description %></td>
+          <td><%= @expense.created_at.strftime('%m/%d/%Y') %></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </main>

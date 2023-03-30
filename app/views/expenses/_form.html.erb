@@ -4,7 +4,7 @@
       <%= expense.errors.full_messages.to_sentence.capitalize %>
     </div>
   <% end %>
-
+  <%= f.label :expense_type, "Expense Type:" %>
   <%= f.select :expense_type, Expense.expense_types.keys.map{ |type| [type.titleize, type] }, { include_blank: 'All categories' }, { class: "form-control" } %>
   <%= f.input :value, input_html: { autofocus: true }, label: 'Value' %>
   <%= f.input :description, label: 'Description' %>

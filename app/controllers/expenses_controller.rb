@@ -47,9 +47,20 @@ class ExpensesController < ApplicationController
   end
 
   def show_report
+    @@scope_of_expenses = current_user.expenses
     @q = Expense.ransack(params[:q])
     @expenses = @q.result(distinct: true).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @@scope_of_expenses = @expenses
+    @expenses
   end
+
+  def send_report
+    @expenses = @@scope_of_expenses
+    UserMailer.report_email(params[:email], @expenses).deliver_now
+    flash[:notice] = 'Expenses sent successfully!'
+    redirect_to show_report_path
+  end
+
 
   private
 

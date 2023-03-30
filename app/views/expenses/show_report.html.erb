@@ -1,6 +1,6 @@
 <%= search_form_for @q, url: generate_report_path, method: :post do |f| %>
-  <%= f.label :expense_type_eq, "Expense Type" %>
-  <%= f.select :expense_type_eq, Expense.expense_types.keys.map{ |type| [type.titleize, type] }, { include_blank: 'All categories' }, { class: "form-control" } %>
+  <%= f.label :expense_type_eq, "Expense Type:" %>
+  <%= f.select :expense_type_eq, Expense.expense_types.map { |k, v| [k.titleize, v] }, { include_blank: 'All categories' }, { class: "form-control" } %>
 
   <%= f.label :created_at_gteq, "Less than:" %>
   <%= f.text_field :value_lteq, placeholder: 'Enter a value' %>
@@ -12,7 +12,13 @@
 
   <%= f.label :created_at_lteq, "To:" %>
   <%= f.date_field :created_at_lteq, type: "date" %>
-  <%= f.submit "Sort" %>
+  <%= f.submit "Sort", class: 'btn btn--primary' %>
+<% end %>
+
+<%= form_with url: send_report_path, method: :post do |f| %>
+  <%= f.label :email, "Share with:" %>
+  <%= f.text_field :email %>
+  <%= f.submit 'Send Report', class: 'btn btn--primary' %>
 <% end %>
 
 <%= turbo_frame_tag 'expenses' do %>
