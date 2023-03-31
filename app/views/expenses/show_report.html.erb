@@ -23,6 +23,8 @@
         <%= render @expenses %>
       <% end %>
 
+      <h2>Total expenses: <%= number_to_currency(@expenses.sum(&:value)) %></h2>
+
       <%= will_paginate @expenses %>
     </div>
   </main>
