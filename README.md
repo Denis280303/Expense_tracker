@@ -17,7 +17,7 @@ Things you may want to cover:
 
 * Setup
 
-> Use `bin/setup` and the `bin/dev` scripts for setup project
+> Use `bin/setup` and the `bin/dev` scripts for setup project.
 > Running the `bin/rails db:seed` command is equivalent to removing all the expanses and loading fixtures as development data.
 
 * Registration
@@ -29,4 +29,4 @@ However, it is MANDATORY to specify both the login and email in order to further
 
 Since the program is a test, it takes several days of approval from the AWS SES team to allow the use of mail distribution in production,
 since in the limited mode it is possible to send messages only to addresses verified by the AWS system.
-If you have a verified address, you can send messages.
+If you have a verified bu AWS address, you can send messages.
